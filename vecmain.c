@@ -7,7 +7,8 @@ int main(int argc, char* argv[])
   unsigned int n;
   scanf("%d", &n);
   float vec1[n], vec2[n], vecRes[n];
-  float dotProduct, angle;
+  float norm,dotProduct, angle;
+  int status;
 
   printf("Enter the first vector: ");
   for(unsigned int i=0; i<n; ++i)
@@ -20,7 +21,7 @@ int main(int argc, char* argv[])
     scanf("%f",vec2+i);
   }
 
-  int status = sumVec(vec1, vec2, vecRes, n);
+  status = sumVec(vec1, vec2, vecRes, n);
   if(status)
   {
     printf("Sum: ");
@@ -42,15 +43,11 @@ int main(int argc, char* argv[])
     printf("\n\n");
   }
 
-  status = diffVec(vec1, vec2, vecRes, n);
+  status = normVec(vec1, vec2, n);
   if(status)
   {
-    printf("Difference: ");
-    for(unsigned int i=0; i<n; ++i)
-    {
-      printf("%f ", vecRes[i]);
-    }
-    printf("\n\n");
+    norm = normVec(vec1, vec2, n);
+    printf("Norm: %.2f\n\n", norm);
   }
 
   dotProduct = dotProductVec(vec1, vec2, n);

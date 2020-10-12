@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include<math.h>
 /*
  * Stores the sum in destVec
  * returns 1 on success, 0 on error
@@ -15,10 +15,17 @@ int productVec(float* aVec, float* bVec, float* destVec, unsigned int vecSize);
 
 
 /*
- * Stores the difference in destVec
- * returns 1 on success, 0 on error
+ * Returns norm of two vectors
  */
-int diffVec(float* aVec, float* bVec, float* destVec, unsigned int vecSize);
+float normVec(float* aVec, float* bVec, unsigned int vecSize)
+{
+    float norm = 0;
+    for(unsigned int i=0;i<vecSize;i++)
+    {
+        norm+=pow(aVec[i]-bVec[i],2);
+    }
+    return sqrt(norm);
+}
 
 
 /*
